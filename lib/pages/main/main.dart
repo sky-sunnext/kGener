@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:iconic/iconic.dart";
 
 class MainPage extends StatefulWidget {
 	const MainPage({ super.key });
@@ -10,11 +11,23 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
 	late final PageController pageController;
 
+	static const pagesMap = <Widget>[
+
+	];
+	static const btmNavItems = <BottomNavigationBarItem>[
+		BottomNavigationBarItem(
+			icon: Icon(Iconic.home),
+			activeIcon: Icon(Iconic.home_bold),
+			label: ""
+		)
+	];
+	int currentIndex = 0;
+
 	@override
 	void initState() {
 		super.initState();
 		assert(btmNavItems.length == pagesMap.length);
-		
+
 		pageController = PageController();
 	}
 
@@ -23,14 +36,6 @@ class _MainPageState extends State<MainPage> {
 		pageController.dispose();
 		super.dispose();
 	}
-
-	static const pagesMap = <Widget>[
-
-	];
-	static final btmNavItems = <BottomNavigationBarItem>[
-		BottomNavigationBarItem()
-	];
-	int currentIndex = 0;
 
 	@override
 	Widget build(BuildContext context) {

@@ -1,0 +1,7 @@
+pages:
+  home:
+    title: Home
+  list:
+    title: Collections
+  poly:
+    title: Poly

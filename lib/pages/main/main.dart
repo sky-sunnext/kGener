@@ -1,5 +1,11 @@
 import "package:flutter/material.dart";
 import "package:iconic/iconic.dart";
+import "package:kgener/i18n/i18n.dart";
+// import "package:i18n_extension/default.i18n.dart";
+
+import "./pages/home/main.dart" show HomePage;
+import "./pages/list/main.dart" show ListPage;
+import "./pages/poly/main.dart" show PolyPage;
 
 class MainPage extends StatefulWidget {
 	const MainPage({ super.key });
@@ -12,13 +18,25 @@ class _MainPageState extends State<MainPage> {
 	late final PageController pageController;
 
 	static const pagesMap = <Widget>[
-
+		HomePage(),
+		ListPage(),
+		PolyPage()
 	];
-	static const btmNavItems = <BottomNavigationBarItem>[
+	late final btmNavItems = <BottomNavigationBarItem>[
 		BottomNavigationBarItem(
-			icon: Icon(Iconic.home),
-			activeIcon: Icon(Iconic.home_bold),
-			label: ""
+			icon: const Icon(Iconic.home),
+			activeIcon: const Icon(Iconic.home_bold),
+			label: t.pages.home.title
+		),
+		BottomNavigationBarItem(
+			icon: const Icon(Iconic.document),
+			activeIcon: const Icon(Iconic.document_bold),
+			label: t.pages.list.title
+		),
+		BottomNavigationBarItem(
+			icon: const Icon(Iconic.apps),
+			activeIcon: const Icon(Iconic.apps_bold),
+			label: t.pages.poly.title
 		)
 	];
 	int currentIndex = 0;
@@ -50,9 +68,9 @@ class _MainPageState extends State<MainPage> {
 							itemBuilder: (context, index) {
 								return pagesMap.elementAt(index);
 							},
-							onPageChanged: (index) {
+							onPageChanged: (index) => setState(() {
 								currentIndex = index;
-							},
+							}),
 						)
 					)
 				],
@@ -64,7 +82,7 @@ class _MainPageState extends State<MainPage> {
 					pageController.animateToPage(
 						index,
 						duration: const Duration(milliseconds: 350),
-						curve: Curves.bounceInOut
+						curve: Curves.easeInOutQuart
 					);
 				}
 			),

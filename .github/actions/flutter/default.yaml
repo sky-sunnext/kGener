@@ -1,0 +1,10 @@
+steps:
+  - uses: actions/checkout@v4
+    name: Clone repository
+  - name: Set up Flutter
+    uses: subosito/flutter-action@v2
+    with:
+      channel: stable
+      flutter-version-file: pubspec.yaml
+  - run: flutter --version
+  - run: flutter pub get

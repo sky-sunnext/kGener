@@ -1,0 +1,37 @@
+name: Flutter Project Build
+on:
+  push:
+    branches:
+      - build-wanted
+jobs:
+  build-windows:
+    runs-on: windows-2022
+    steps:
+      - name: Default Flutter Action
+        uses: ./.github/actions/flutter/default
+      - run: flutter build windows --release
+  build-android:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Default Flutter Action
+        uses: ./.github/actions/flutter/default
+      - run: flutter build apk --release
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Default Flutter Action
+        uses: ./.github/actions/flutter/default
+      - run: flutter build linux --release
+  build-ios:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Default Flutter Action
+        uses: ./.github/actions/flutter/default
+      # - run: find . -name "Podfile" -execdir pod install \;
+      - run: flutter build ipa --release
+  build-macos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Default Flutter Action
+        uses: ./.github/actions/flutter/default
+      - run: flutter build macos --release

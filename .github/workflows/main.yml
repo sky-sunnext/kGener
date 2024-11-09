@@ -2,7 +2,7 @@ name: Flutter Project Build
 on:
   push:
     branches:
-      - build-wanted
+      - build
 jobs:
   build-windows:
     runs-on: windows-2022

@@ -34,6 +34,7 @@ Future<void> main() async {
 	);
 
 	await Rhttp.init();
+	
 	final List<Provider> providers = [];
 
 	fvp.registerWith();

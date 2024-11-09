@@ -2,7 +2,7 @@ name: Flutter Project Build
 on:
   push:
     branches:
-      - build-wanted
+      - build
 jobs:
   build-windows:
     runs-on: windows-2022
@@ -33,5 +33,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Default Flutter Action
+<<<<<<< HEAD
         uses: ./.github/actions/flutter
       - run: flutter build macos --release
+=======
+        uses: ./.github/actions/flutter/default
+      - run: flutter build macos --release
+>>>>>>> 0d74378855a282555f48ff26c467ca11091a630c
